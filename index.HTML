@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SOS Humor Duvidoso 🧐😂</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: Comic Sans MS, cursive;
+    background: linear-gradient(45deg, #ffcc00, #ff6699);
+    overflow-x: hidden;
+    text-align: center;
+}
+
+h1 {
+    font-size: 3rem;
+    margin-top: 20px;
+    color: white;
+    text-shadow: 3px 3px 5px black;
+}
+
+.container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 10px;
+}
+
+.joke-box {
+    background: white;
+    border-radius: 20px;
+    padding: 20px;
+    margin: 15px 0;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    transition: transform 0.2s;
+}
+
+.joke-box:hover {
+    transform: scale(1.03);
+}
+
+.question {
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.answer {
+    display: none;
+    margin-top: 10px;
+    font-size: 1.1rem;
+    color: #333;
+}
+
+.emoji-btn {
+    font-size: 2rem;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.floating-emoji {
+    position: fixed;
+    font-size: 2rem;
+    animation: float 10s linear infinite;
+}
+
+@keyframes float {
+    0% { transform: translateY(100vh); opacity: 0; }
+    10% { opacity: 1; }
+    100% { transform: translateY(-10vh); opacity: 0; }
+}
+</style>
+</head>
+
+<body>
+
+<h1>🤣 Piadas de Tiozão 🤣</h1>
+
+<div class="container" id="jokesContainer"></div>
+
+<script>
+
+const jokes = [
+{q:"Se um dia você ficar trancado do lado de fora, converse com a fechadura.", a:"Pois comunicação é a chave."},
+{q:"Por que o jardineiro nunca briga com a planta?", a:"Porque ele sempre a rega."},
+{q:"Como transformar um giz em uma cobra?", a:"É só colocar ele na água, pois o giz-boia. (Jiboia, sacou?)"},
+{q:"Se um vinho tinto se tornar um vinho branco ele morre na hora.", a:"Porque agora ele será EX-TINTO."},
+{q:"O que uma privada falou para outra?", a:"Nunca saberemos, a conversa era privada."},
+{q:"Como faz pra ouvir muitas piadas?", a:"É só carregar um saco cheio de pintinhos."},
+
+{q:"Por que o computador foi ao médico?", a:"Porque ele estava com vírus."},
+{q:"O que o zero disse para o oito?", a:"Que cinto bonito!"}, 
+{q:"Por que a vaca foi para o espaço?", a:"Para se encontrar com o vácuo."},
+{q:"O que o papel falou para a caneta?", a:"Você está me deixando marcado."},
+{q:"Por que o livro de matemática se suicidou?", a:"Porque tinha muitos problemas."},
+{q:"O que o tomate foi fazer no banco?", a:"Foi tirar extrato."},
+{q:"Por que o café foi à polícia?", a:"Porque ele foi coado."},
+{q:"Qual é o doce favorito do átomo?", a:"Pé-de-moléculas."},
+{q:"Por que o relógio foi demitido?", a:"Porque ele sempre atrasava."},
+{q:"O que o peixe disse quando bateu na parede?", a:"Dãããm."},
+{q:"Qual é o cúmulo da força?", a:"Dobrar a esquina."},
+{q:"Por que a laranja foi ao médico?", a:"Porque ela estava descascando."},
+{q:"O que o vento falou para a árvore?", a:"Estou passando para dar uma soprada."},
+{q:"Por que o lápis foi para a escola?", a:"Para ficar apontado."},
+{q:"O que o chão falou para a cadeira?", a:"Você está me apoiando."},
+{q:"Qual é o animal mais antigo?", a:"A zebra, porque é em preto e branco."},
+{q:"Por que o espelho nunca mente?", a:"Porque ele reflete antes de falar."},
+{q:"O que o bolo falou para a vela?", a:"Você está me derretendo."},
+{q:"Por que o celular foi para a academia?", a:"Para ficar com mais sinal."},
+{q:"Qual é o café mais perigoso do mundo?", a:"O ex-presso."}
+];
+
+const container = document.getElementById("jokesContainer");
+
+jokes.forEach(joke => {
+    const box = document.createElement("div");
+    box.className = "joke-box";
+
+    const question = document.createElement("div");
+    question.className = "question";
+    question.innerText = joke.q;
+
+    const answer = document.createElement("div");
+    answer.className = "answer";
+    answer.innerText = joke.a;
+
+    const emojiBtn = document.createElement("div");
+    emojiBtn.className = "emoji-btn";
+    emojiBtn.innerText = "🤔";
+
+    emojiBtn.onclick = () => {
+        answer.style.display = answer.style.display === "none" ? "block" : "none";
+        emojiBtn.innerText = answer.style.display === "block" ? "😂" : "🤔";
+    };
+
+    box.appendChild(question);
+    box.appendChild(emojiBtn);
+    box.appendChild(answer);
+    container.appendChild(box);
+});
+
+// Emojis flutuando
+function createFloatingEmoji() {
+    const emoji = document.createElement("div");
+    emoji.className = "floating-emoji";
+    emoji.style.left = Math.random() * 100 + "vw";
+    emoji.innerText = ["😂","🤣","😆","😹"][Math.floor(Math.random()*4)];
+    emoji.style.animationDuration = (5 + Math.random() * 5) + "s";
+    document.body.appendChild(emoji);
+
+    setTimeout(() => {
+        emoji.remove();
+    }, 10000);
+}
+
+setInterval(createFloatingEmoji, 800);
+
+</script>
+
+</body>
+</html>
